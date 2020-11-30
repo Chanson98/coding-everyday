@@ -1,0 +1,27 @@
+questions link:
+https://leetcode.com/discuss/interview-question/948919/Amazon-or-OA2-or-Fill-The-Truck
+
+
+
+var fillthetruck=function(num,boxes,unitSize, unitsPerBox,truckSize){
+  var maxHeap=[];
+    for(let i=0;i<boxes.length;i++) {
+        for(let j=0;j<boxes[i];j++){
+            maxHeap.push(unitsPerBox[i]);
+        }
+    }
+    maxHeap=maxHeap.sort((a,b)=>b-a)
+    let res = 0;
+    while(truckSize!=0 && maxHeap.length>0){
+        res += maxHeap.shift();
+        truckSize=truckSize-1;
+    }
+    return res;
+}
+num=3
+boxes=[1,2,3]
+unitSize=3
+unitsPerBox= [3,2,1]
+truckSize = 3
+console.log(fillthetruck(num,boxes,unitSize,unitsPerBox,truckSize))
+//output=7
